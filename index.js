@@ -9009,4 +9009,9 @@ const issuesWithUpdatedApiUrl = issues.map(issue => Object.assign({}, issue, {
   const commentCountAcrossIssues = issues.map(issue => issue.comments_count)
   .reduce((total, count) => total + count, 0);
 
-  
+  const openIssues = issues.reduce((openIssues, issue) => {
+    if (issue.state === 'open') {
+      return [...openIssues, issue];
+    }
+    return openIssues;
+  }, []);
