@@ -9015,3 +9015,14 @@ const issuesWithUpdatedApiUrl = issues.map(issue => Object.assign({}, issue, {
     }
     return openIssues;
   }, []);
+
+  const nonAutomaticIssues = issues.reduce((totalIssues, issue) => {
+    const isAutomaticIssue = issue.body.includes('automatically created by learn.co');
+  
+    if (!isAutomaticIssue) {
+      totalIssues.push(issue);
+    }
+  
+    return totalIssues;
+  }, []);
+
