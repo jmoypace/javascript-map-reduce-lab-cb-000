@@ -9005,3 +9005,8 @@ const issues = [
 const issuesWithUpdatedApiUrl = issues.map(issue => Object.assign({}, issue, {
     url: issue.url.replace('api.github.com', 'api-v2.github.com')
   }));
+
+  const commentCountAcrossIssues = issues.map(issue => issue.comments_count)
+  .reduce((total, count) => total + count, 0);
+
+  
